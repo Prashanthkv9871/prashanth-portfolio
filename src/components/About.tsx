@@ -1,11 +1,13 @@
-export default function About() {
+const About = () => {
     return (
-        <section className="py-16 px-6 text-center">
-            <h2 className="text-2xl font-bold mb-4">About Me</h2>
-            <p className="text-gray-400 max-w-xl mx-auto">
-                I am a frontend developer with experience in building scalable web applications
-                using React, Vue, and modern technologies.
+        <section className="py-16 px-6 max-w-4xl mx-auto">
+            <h2 className="text-3xl font-semibold mb-4">About Me</h2>
+            <p className="text-gray-300">
+                I am a web developer with experience in building scalable web and mobile
+                applications using React, Vue, Nuxt, and Node.js.
             </p>
         </section>
     );
-}
+};
+
+export default About;
