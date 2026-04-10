@@ -5,11 +5,18 @@ const Hero = () => {
                 Hi, I'm Prashanth 👋
             </h1>
             <p className="mt-4 text-lg text-gray-300">
-                Web & Mobile Developer | React | Vue | Nuxt
+                Frontend Developer with 3.6+ years of experience
+                <br />
+                I build scalable web & mobile applications with modern UI/UX
             </p>
-            <button className="mt-6 px-6 py-3 bg-green-500 rounded-xl hover:bg-green-600">
-                View Projects
-            </button>
+            <div className="flex gap-3">
+                <button className="mt-6 px-6 py-3 bg-green-500 rounded-xl hover:bg-green-600">
+                    View Projects
+                </button>
+                <button className="mt-6 px-6 py-3 bg-green-500 rounded-xl hover:bg-green-600">
+                    View Resume
+                </button>
+            </div>
         </section>
     );
 };

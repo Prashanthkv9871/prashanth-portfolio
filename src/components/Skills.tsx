@@ -1,5 +1,5 @@
 const Skills = () => {
-    const skills = ["React", "Vue", "Nuxt", "Tailwind", "Node.js", "MongoDB"];
+    const skills = ["HTML5", "CSS3", "Javascript", "Typescript", "React JS", "Next JS", "React Native", "Vue JS", "Nuxt JS", "Tailwind CSS", "GitHub",];
 
     return (
         <section className="py-16 px-6">
