@@ -6,6 +6,7 @@ import { FiAlertCircle } from "react-icons/fi";
 interface IFormData {
     name: string,
     email: string,
+    subject: string,
     message: string,
 }
 
@@ -14,6 +15,7 @@ export default function Contact() {
         name: "",
         email: "",
         message: "",
+        subject: ""
     });
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -49,6 +51,7 @@ export default function Contact() {
                     name: formData.name,
                     email: formData.email,
                     message: formData.message,
+                    subject: formData.subject
                 },
                 publicKey
             );
@@ -57,7 +60,7 @@ export default function Contact() {
                 type: "success",
                 message: "Message sent successfully! I'll get back to you soon.",
             });
-            setFormData({ name: "", email: "", message: "" });
+            setFormData({ name: "", email: "", subject: "", message: "" });
         } catch (err: any) {
             console.error("EmailJS error:", err);
             setSubmitStatus({
@@ -69,7 +72,7 @@ export default function Contact() {
             setIsLoading(false);
         }
     };
-    
+
     return (
         <div className="max-w-5xl mx-auto bg-gray-800 rounded-xl">
             <form onSubmit={handleSubmit} className="max-w-2xl mx-auto flex flex-col justify-center gap-6 px-4 py-8">
@@ -101,6 +104,20 @@ export default function Contact() {
                         className="w-full border border-white rounded-md p-1.5"
                     />
                 </div>
+
+                <div className="flex gap-2">
+                    <label htmlFor="subject" className="min-w-20">Subject: </label>
+                    <input
+                        type="text"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        placeholder="Enter Subject"
+                        required
+                        className="w-full border border-white rounded-md p-1.5"
+                    />
+                </div>
+
                 <div className="flex gap-2">
                     <label htmlFor="message" className="min-w-20">Message: </label>
 
