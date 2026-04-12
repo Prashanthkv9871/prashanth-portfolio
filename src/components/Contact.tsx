@@ -1,6 +1,6 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import { FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle, FaPaperPlane } from "react-icons/fa";
 import { FiAlertCircle } from "react-icons/fi";
 
 interface IFormData {
@@ -20,7 +20,7 @@ export default function Contact() {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [submitStatus, setSubmitStatus] = useState<{ type: string | null; message: string }>({
-        type: null, // 'success' or 'error'
+        type: null,
         message: "",
     });
 
@@ -30,129 +30,121 @@ export default function Contact() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         setIsLoading(true);
         setSubmitStatus({ type: null, message: "" });
+
         try {
             const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
             const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
             const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
             if (!serviceId || !templateId || !publicKey) {
-                throw new Error(
-                    "EmailJS configuration is missing. Please check your environment variables."
-                );
+                throw new Error("Configuration missing.");
             }
 
-            await emailjs.send(
-                serviceId,
-                templateId,
-                {
-                    name: formData.name,
-                    email: formData.email,
-                    message: formData.message,
-                    subject: formData.subject
-                },
-                publicKey
-            );
+            await emailjs.send(serviceId, templateId, { ...formData }, publicKey);
 
             setSubmitStatus({
                 type: "success",
-                message: "Message sent successfully! I'll get back to you soon.",
+                message: "Message sent! I'll get back to you soon.",
             });
             setFormData({ name: "", email: "", subject: "", message: "" });
         } catch (err: any) {
-            console.error("EmailJS error:", err);
             setSubmitStatus({
                 type: "error",
-                message:
-                    err?.text || "Failed to send message. Please try again later.",
+                message: "Failed to send. Please try again later.",
             });
         } finally {
             setIsLoading(false);
         }
     };
 
+    const inputClasses = "w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-emerald-500/50 transition-all text-gray-200 placeholder:text-gray-500";
+
     return (
-        <div className="max-w-5xl mx-auto bg-gray-800 rounded-xl">
-            <form onSubmit={handleSubmit} className="max-w-2xl mx-auto flex flex-col justify-center gap-6 px-4 py-8">
-                <h3 className="text-3xl font-bold text-center">Contact Form</h3>
+        <section id="contact" className="py-24 px-6 max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-white mb-4">Let's Connect</h2>
+                <p className="text-gray-400">Have a project in mind or just want to say hi?</p>
+            </div>
 
-                <div className="flex gap-2">
-                    <label htmlFor="name" className="min-w-20">Name: </label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Your Name"
-                        required
-                        className="w-full border border-white rounded-md p-1.5"
-                    />
+            <form onSubmit={handleSubmit} className="glass p-8 md:p-12 rounded-3xl border border-white/5 space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium text-gray-400 ml-1">Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="John Doe"
+                            required
+                            className={inputClasses}
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium text-gray-400 ml-1">Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="john@example.com"
+                            required
+                            className={inputClasses}
+                        />
+                    </div>
                 </div>
 
-                <div className="flex gap-2">
-                    <label htmlFor="email" className="min-w-20">Email: </label>
-
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Your Email"
-                        required
-                        className="w-full border border-white rounded-md p-1.5"
-                    />
-                </div>
-
-                <div className="flex gap-2">
-                    <label htmlFor="subject" className="min-w-20">Subject: </label>
+                <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-400 ml-1">Subject</label>
                     <input
                         type="text"
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder="Enter Subject"
+                        placeholder="Project Inquiry"
                         required
-                        className="w-full border border-white rounded-md p-1.5"
+                        className={inputClasses}
                     />
                 </div>
 
-                <div className="flex gap-2">
-                    <label htmlFor="message" className="min-w-20">Message: </label>
-
+                <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-400 ml-1">Message</label>
                     <textarea
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        placeholder="Your Message"
+                        placeholder="Tell me about your project..."
                         required
-                        rows={4}
-                        className="w-full border border-white rounded-md p-1.5"
+                        rows={5}
+                        className={inputClasses}
                     />
                 </div>
 
-                <button type="submit" className="w-full bg-blue-700 py-2 rounded cursor-pointer" disabled={isLoading}>
-                    {isLoading ? "Sending Message" : "Send Message"}
+                <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="group w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                >
+                    {isLoading ? (
+                        <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    ) : (
+                        <>
+                            <span>Send Message</span>
+                            <FaPaperPlane className="text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </>
+                    )}
                 </button>
 
                 {submitStatus.type && (
-                    <div
-                        className={`flex items-center gap-3
-                     p-4 rounded-xl ${submitStatus.type === "success"
-                                ? "bg-green-500/10 border border-green-500/20 text-green-400"
-                                : "bg-red-500/10 border border-red-500/20 text-red-400"
-                            }`}
-                    >
-                        {submitStatus.type === "success" ? (
-                            <FaCheckCircle className="w-5 h-5 shrink-0" />
-                        ) : (
-                            <FiAlertCircle className="w-5 h-5 shrink-0" />
-                        )}
+                    <div className={`flex items-center gap-3 p-4 rounded-xl animate-fade-in ${submitStatus.type === "success" ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400"
+                        }`}>
+                        {submitStatus.type === "success" ? <FaCheckCircle /> : <FiAlertCircle />}
                         <p className="text-sm">{submitStatus.message}</p>
                     </div>
                 )}
             </form>
-        </div>
+        </section>
     );
 }

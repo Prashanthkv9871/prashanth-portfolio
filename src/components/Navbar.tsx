@@ -1,48 +1,74 @@
 import { useState } from "react";
+import { IoMenu, IoClose } from "react-icons/io5";
 
-const Navbar = () => {
+export default function Navbar() {
     const [open, setOpen] = useState(false);
 
-    return (
-        <nav className="fixed w-full top-0 left-0 bg-[#0f0c29]/90 backdrop-blur-md z-50">
-            <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    const navLinks = [
+        { name: "Home", href: "#home" },
+        { name: "About", href: "#about" },
+        { name: "Skills", href: "#skills" },
+        { name: "Experience", href: "#experience" },
+        { name: "Projects", href: "#projects" },
+        { name: "Contact", href: "#contact" },
+    ];
 
-                {/* Logo */}
-                <h1 className="text-2xl font-bold text-green-400 italic">
-                    Prashanth
-                </h1>
+    return (
+        <nav className={`fixed w-full top-0 left-0 z-100 transition-all duration-300 bg-[#0a0a0a]/80 backdrop-blur-lg border-b border-white/5 py-5`}>
+            <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+
+                <a href="#home" className="text-2xl font-black tracking-tighter text-white group">
+                    Prashanth<span className="text-emerald-500 group-hover:animate-pulse">.</span>
+                </a>
 
                 {/* Desktop Menu */}
-                <ul className="hidden md:flex gap-8 text-gray-300">
-                    <li className="hover:text-green-400 cursor-pointer">Home</li>
-                    <li className="hover:text-green-400 cursor-pointer">About</li>
-                    <li className="hover:text-green-400 cursor-pointer">Skills</li>
-                    <li className="hover:text-green-400 cursor-pointer">Projects</li>
-                    <li className="hover:text-green-400 cursor-pointer">Contact</li>
+                <ul className="hidden md:flex items-center gap-10">
+                    {navLinks.map((link) => (
+                        <li key={link.name}>
+                            <a
+                                href={link.href}
+                                className="text-sm font-medium text-gray-400 hover:text-emerald-400 transition-colors duration-300 tracking-wide"
+                            >
+                                {link.name}
+                            </a>
+                        </li>
+                    ))}
+                    {/* Visual indicator for 'Available for work' */}
+                    <li className="pl-4 border-l border-white/10">
+                        <div className="flex items-center gap-2 px-3 py-1 bg-emerald-500/10 rounded-full border border-emerald-500/20">
+                            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping" />
+                            <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Available</span>
+                        </div>
+                    </li>
                 </ul>
 
                 {/* Mobile Menu Button */}
-                <div className="md:hidden">
-                    <button onClick={() => setOpen(!open)}>
-                        ☰
-                    </button>
-                </div>
+                <button
+                    className="md:hidden text-3xl text-gray-300"
+                    onClick={() => setOpen(!open)}
+                    aria-label="Toggle Menu"
+                >
+                    {open ? <IoClose /> : <IoMenu />}
+                </button>
             </div>
 
-            {/* Mobile Menu */}
-            {open && (
-                <div className="md:hidden bg-[#0f0c29] px-6 pb-4">
-                    <ul className="flex flex-col gap-4 text-gray-300">
-                        <li className="hover:text-green-400">Home</li>
-                        <li className="hover:text-green-400">About</li>
-                        <li className="hover:text-green-400">Skills</li>
-                        <li className="hover:text-green-400">Projects</li>
-                        <li className="hover:text-green-400">Contact</li>
-                    </ul>
-                </div>
-            )}
+            {/* Mobile Menu Overlay */}
+            <div className={`fixed inset-0 bg-[#0a0a0a] z-[-1] transition-transform duration-500 md:hidden ${open ? "translate-y-0" : "-translate-y-full"
+                }`}>
+                <ul className="flex flex-col items-center justify-center h-full gap-8">
+                    {navLinks.map((link) => (
+                        <li key={link.name}>
+                            <a
+                                href={link.href}
+                                onClick={() => setOpen(false)}
+                                className="text-3xl font-bold text-gray-200 hover:text-emerald-500"
+                            >
+                                {link.name}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </nav>
     );
 };
-
-export default Navbar;
