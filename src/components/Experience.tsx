@@ -20,11 +20,11 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-32 max-w-6xl mx-auto relative overflow-hidden">
+    <section id="experience" className="max-w-6xl mx-auto relative overflow-hidden">
       <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none" />
 
       <div className="container flex flex-col justify-center items-center mx-auto px-6 relative z-10">
-        <div className="max-w-3xl mb-20 text-center">
+        <div className="max-w-3xl mb-8 md:mb-20 text-center">
           <span className="text-emerald-400 text-sm font-bold tracking-[0.2em] uppercase">
             Career Journey
           </span>

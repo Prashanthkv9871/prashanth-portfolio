@@ -14,7 +14,7 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className={`fixed w-full top-0 left-0 z-100 transition-all duration-300 bg-[#0a0a0a]/80 backdrop-blur-lg border-b border-white/5 py-5`}>
+        <nav className={`fixed w-full top-0 left-0 z-100 transition-all duration-300 bg-[#0a0a0a] border-b border-white/5 py-5`}>
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
 
                 <a href="#home" className="text-2xl font-black tracking-tighter text-white group">
@@ -53,22 +53,23 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu Overlay */}
-            <div className={`fixed inset-0 bg-[#0a0a0a] z-[-1] transition-transform duration-500 md:hidden ${open ? "translate-y-0" : "-translate-y-full"
-                }`}>
-                <ul className="flex flex-col items-center justify-center h-full gap-8">
-                    {navLinks.map((link) => (
-                        <li key={link.name}>
-                            <a
-                                href={link.href}
-                                onClick={() => setOpen(false)}
-                                className="text-3xl font-bold text-gray-200 hover:text-emerald-500"
-                            >
-                                {link.name}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            {open &&
+                <div className={`w-full h-[90vh] fixed top-16 bg-[#0a0a0a] z-10 transition-transform duration-500 md:hidden`}>
+                    <ul className="flex flex-col items-center justify-center h-full gap-8">
+                        {navLinks.map((link) => (
+                            <li key={link.name}>
+                                <a
+                                    href={link.href}
+                                    onClick={() => setOpen(false)}
+                                    className="text-2xl font-bold text-gray-200 hover:text-emerald-500"
+                                >
+                                    {link.name}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            }
         </nav>
     );
 };

@@ -3,11 +3,9 @@ import { MdOutlineFileDownload } from "react-icons/md";
 
 export default function Hero() {
     return (
-        <section id="home" className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-64 h-64 bg-green-500/10 blur-[120px] rounded-full -z-10" />
-
+        <section id="home" className="relative min-h-svh flex flex-col justify-center items-center text-center px-4 pt-20 md:pt-24  overflow-hidden">
             <div className="max-w-4xl mx-auto">
-                <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-wider text-green-400 uppercase bg-green-500/10 border border-green-500/20 rounded-full animate-fade-in">
+                <span className="inline-block px-4 py-1.5 mb-6 text-xs md:text-sm font-medium tracking-wider text-green-400 uppercase bg-green-500/10 border border-green-500/20 rounded-full animate-fade-in">
                     Available for New Opportunities
                 </span>
 

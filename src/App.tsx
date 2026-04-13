@@ -8,7 +8,7 @@ import Contact from "./components/Contact";
 
 function App() {
   return (
-    <div className="bg-[#0f0c29] text-white">
+    <div className="bg-[#0f0c29] text-white flex flex-col gap-20 md:gap-28">
       <Navbar />
       <Hero />
       <About />

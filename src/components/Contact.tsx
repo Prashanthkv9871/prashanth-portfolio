@@ -62,13 +62,13 @@ export default function Contact() {
     const inputClasses = "w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-emerald-500/50 transition-all text-gray-200 placeholder:text-gray-500";
 
     return (
-        <section id="contact" className="py-24 px-6 max-w-4xl mx-auto">
-            <div className="text-center mb-12">
+        <section id="contact" className="px-6 max-w-4xl mx-auto">
+            <div className="text-center mb-8 md:mb-12">
                 <h2 className="text-4xl font-bold text-white mb-4">Let's Connect</h2>
                 <p className="text-gray-400">Have a project in mind or just want to say hi?</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="glass p-8 md:p-12 rounded-3xl border border-white/5 space-y-6">
+            <form onSubmit={handleSubmit} className="glass p-4 md:p-12 rounded-3xl border border-white/5 space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                         <label className="text-sm font-medium text-gray-400 ml-1">Name</label>

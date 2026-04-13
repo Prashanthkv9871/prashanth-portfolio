@@ -38,8 +38,8 @@ export default function Projects() {
     ];
 
     return (
-        <section id="projects" className="py-24 px-6 max-w-6xl mx-auto">
-            <div className="flex flex-col items-center mb-16 text-center">
+        <section id="projects" className="px-6 max-w-6xl mx-auto">
+            <div className="flex flex-col items-center mb-8 md:mb-16 text-center">
                 <span className="text-emerald-400 text-sm font-bold tracking-widest uppercase mb-3">Portfolio</span>
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Featured Projects</h2>
                 <div className="h-1 w-20 bg-emerald-500 rounded-full"></div>
