@@ -11,7 +11,7 @@ export default function Projects() {
                 "Streamlined workflows for document upload and real-time status tracking.",
                 "Integrated secure .NET API services with Nuxt 3 and Pinia state management."
             ],
-            technologies: ["Nuxt JS", "Pinia", "Tailwind CSS", ".NET", "MSSQL"]
+            technologies: ["Nuxt JS", "Pinia", "TypeScript", "Tailwind CSS", ".NET", "MSSQL"]
         },
         {
             title: "Dezigncode CRM",
@@ -22,7 +22,7 @@ export default function Projects() {
                 "Developed a shared component library for both Web (React) and Mobile (React Native).",
                 "Optimized data fetching and synchronization using Zustand."
             ],
-            technologies: ["React JS", "React Native", "Zustand", "Laravel", "MySQL"]
+            technologies: ["React JS", "React Native", "Zustand","TypeScript", "Laravel", "MySQL"]
         },
         {
             title: "Address Health Revamp",
@@ -33,7 +33,7 @@ export default function Projects() {
                 "Implemented complex student data validation forms and UI performance audits.",
                 "Utilized Next.js for SSR to improve SEO and initial load speeds."
             ],
-            technologies: ["Next JS", "Redux", "Tailwind CSS", "PHP", "MySQL"]
+            technologies: ["Next JS", "Redux", "TypeScript", "Tailwind CSS", "PHP", "MySQL"]
         },
     ];
 
@@ -80,7 +80,7 @@ export default function Projects() {
                             {project.technologies.map((tech) => (
                                 <span
                                     key={tech}
-                                    className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 font-medium hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-colors"
+                                    className="uppercase px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 font-medium hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-colors"
                                 >
                                     {tech}
                                 </span>

@@ -77,7 +77,7 @@ export default function Contact() {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            placeholder="John Doe"
+                            placeholder="Your full name"
                             required
                             className={inputClasses}
                         />
@@ -89,7 +89,7 @@ export default function Contact() {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            placeholder="john@example.com"
+                            placeholder="yourname@gmail.com"
                             required
                             className={inputClasses}
                         />
@@ -103,7 +103,7 @@ export default function Contact() {
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder="Project Inquiry"
+                        placeholder="What's this regarding?"
                         required
                         className={inputClasses}
                     />
@@ -115,7 +115,7 @@ export default function Contact() {
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        placeholder="Tell me about your project..."
+                        placeholder="Tell me the purpose of your message..."
                         required
                         rows={5}
                         className={inputClasses}

@@ -6,7 +6,7 @@ export default function Experience() {
       company: "Vhypotenuse",
       description:
         "Leading frontend architecture for scalable web and mobile applications. Focused on building reusable component libraries and optimizing cross-platform performance using React Native and Nuxt.",
-      technologies: ["React JS", "React Native", "Vue JS", "Nuxt JS", "TypeScript", "Zustand", "Pinia"],
+      technologies: ["React JS", "React Native", "Vue JS", "Nuxt JS", "TypeScript", "Tailwind CSS", "Zustand", "Pinia"],
       current: false,
     },
     {
@@ -14,7 +14,7 @@ export default function Experience() {
       role: "Frontend Developer",
       company: "Zysk Technologies",
       description: "Developed responsive UI components and integrated complex APIs. Focused on SEO optimization and performance auditing for client-facing applications.",
-      technologies: ["React JS", "Redux", "Next JS", "Tailwind CSS"],
+      technologies: ["React JS", "Redux", "Next JS", "TypeScript", "Tailwind CSS"],
       current: false,
     }
   ];

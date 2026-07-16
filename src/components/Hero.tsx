@@ -1,5 +1,5 @@
 import { FaRegEye } from "react-icons/fa6";
-import { MdOutlineFileDownload } from "react-icons/md";
+// import { MdOutlineFileDownload } from "react-icons/md";
 
 export default function Hero() {
     return (
@@ -18,14 +18,14 @@ export default function Hero() {
                 </p>
 
                 <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a
+                    {/* <a
                         href="/prashanth-portfolio/Prashanth_KV_Resume.pdf"
                         download
                         className="group flex items-center gap-2 px-8 py-4 bg-green-500 text-black font-bold rounded-xl transition-all duration-300 hover:bg-green-400 hover:scale-105 active:scale-95 shadow-lg shadow-green-500/20"
                     >
                         Download Resume
                         <MdOutlineFileDownload size={24} className="group-hover:animate-bounce" />
-                    </a>
+                    </a> */}
 
                     <a
                         href="/prashanth-portfolio/Prashanth_KV_Resume.pdf"
